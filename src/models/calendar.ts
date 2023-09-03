@@ -1,10 +1,10 @@
 import { google } from "googleapis"
-import "dotenv/config"
-import { Credentials } from "./types"
+import { CREDENTIALS, CALENDAR_ID } from "../credentials"
 
 //configuration
-const CREDENTIALS = JSON.parse(process.env.CREDENTIALS)
-const calendarID = process.env.CALENDAR_ID
+
+//const Crendetials = CREDENTIALS
+//const calendarID = CALENDAR_ID
 
 //Calendar API settings
 const SCOPES = "https://www.googleapis.com/auth/calendar"
@@ -25,7 +25,36 @@ const dateTimeForCalender = () => {
   let date = new Date()
   let year = date.getFullYear()
   let month = date.getMonth() + 1
+  let day = date.getDate()
+  let hour = date.getHours()
+  let minute = date.getMinutes()
+  /* 
   if (month < 10) {
-    let monthStr = `0${month}`
+    month = `0${month}`
+  }
+
+  if (day < 10) {
+    day = `0${day}`
+  }
+
+  if (hour < 10) {
+    hour = `0${hour}`
+  }
+
+  if (minute < 10) {
+    minute = `0${minute}`
+  }*/
+  //let newDateTime = `${year}-${month}-${day}T${hour}:${minute}:00.000${TIMEOFFSET}`
+
+  //let event = new Date(Date.parse(newDateTime))
+  let event = new Date()
+  let startDate = event
+  // Delay in end time is 1
+  let endDate = new Date(new Date(startDate).setHours(startDate.getHours() + 1))
+
+  return {
+    start: startDate,
+    end: endDate,
   }
 }
+console.log(dateTimeForCalender())
