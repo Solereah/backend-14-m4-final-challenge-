@@ -1,0 +1,13 @@
+[
+  {
+    "id": 0,
+    "userId": "UUID",
+    "userName": "Sol",
+    "title": "cita medica",
+    "description": "lalallalala",
+    "starDate": "2020-03-31",
+    "startTime": "13:30",
+    "endDate": "2020-03-31",
+    "endTime": "14:30"
+  }
+]
