@@ -23,3 +23,32 @@ Bienvenido a la aplicación de recetas de cocina. Esta aplicación te permite de
 
 - Node.js
 - NPM (Node Package Manager)
+
+<h2>Parámetros de Línea de Comandos</h2>
+<h3>Comandos relacionados a meal</h3>
+<strong>npm run dev -- --meal --all </strong>   --> Lista todas las comidas por categorías
+<br>
+<strong>npm run dev -- --meal --random </strong>  --> Devuelve una receta al azar
+<br>
+<strong>npm run dev -- --meal --search --idMeal=52772 </strong> --> Busca una comida por el id  
+<br>
+<strong>npm run dev -- --meal --search --name=arrabiata </strong> --> Busca una comida por el nombre 
+<br>
+<strong>npm run dev -- --meal --filter --firstLetter=a  </strong>  --> Lista todas las comidas que comiencen con la primera letra
+<br>
+<strong>npm run dev -- --meal --filter --mainIngredient=chicken </strong>  --> Lista todas las comidas que contengan ese ingrediente principal
+<br>
+<strong>npm run dev -- --meal --filter --category=seafood </strong> --> Lista todas las comidas segun la categoria
+<br>
+<strong>npm run dev -- --meal --filter --area=canadian </strong>  --> Lista todas las comidas segun el area 
+<br>
+<strong>npm run dev -- --meal --listAll --name=categories </strong> --> Lista todas las categories, areas e ingredients
+
+<h3>Comando realacionados a user</h3>
+<strong>npm run dev -- --user --create --name=dolly </strong> --> Crea un usuario, solo se necesita el nombre
+<br>
+<strong>npm run dev -- --user --addFavorite --idUser=acd66d06-e032-4444-9641-0c53f53d4d34 --idMeal=53025 </strong> --> Agrega una receta favorita al listado de comidas favoritas de cada usuario
+<br>
+<strong>npm run dev -- --user --deleteMeal --idUser= --idMeal= </strong> --> Borra una receta del listado de comidas favoritas de cada usuario
+<br>
+<strong>npm run dev -- --user --deleteUser --idUser= </strong> --> Borra un usuario de la base de datos
