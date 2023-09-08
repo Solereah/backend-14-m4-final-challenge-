@@ -2,7 +2,7 @@
 
 <h2 align="center">ChefVirtual</2>
 <br>
-  ![Logo de la App](https://giphy.com/embed/ToMjGpCfO0af8so8s5q)
+  <img src="https://media.giphy.com/media/ToMjGpCfO0af8so8s5q/giphy.gif"></>
 
 Bienvenido a la aplicación de recetas de cocina. Esta aplicación te permite descubrir y guardar tus recetas favoritas, planificar comidas y hacer que cocinar sea una experiencia divertida y deliciosa.
 
