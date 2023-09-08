@@ -1,13 +1,20 @@
 import { ChefModel } from "../models/chef"
-import { Chef } from "../models/types"
 
 abstract class ChefController {
   static createChef = async (userData: any): Promise<any> =>
     await ChefModel.createChef(userData)
   static addFavoriteMeal = async (
-    objData: Chef,
+    userId: string,
     mealId: string
-  ): Promise<boolean> => await ChefModel.addFavoriteMeal(objData, mealId)
+  ): Promise<boolean> => await ChefModel.addFavoriteMeal(userId, mealId)
+
+  static deleteUser = async (userId: string) =>
+    await ChefModel.deleteUser(userId)
+
+  static deleteFavoriteMeal = async (
+    userId: string,
+    mealId: string
+  ): Promise<boolean> => await ChefModel.deleteFavoriteMeal(userId, mealId)
 }
 
 export { ChefController }

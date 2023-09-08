@@ -1,9 +1,10 @@
-import { Chef, Meal, MealsDB } from "./types"
+import { Chef } from "./types"
 import chefsDB from "../database/chefs.json"
 import { randomUUID } from "node:crypto"
 import { writeFile } from "jsonfile"
 import { RecipeModel } from "./recipe"
 const CHEFS_DB_PATH = "./src/database/chefs.json"
+
 const createUser = (data: Chef) => {
   const { name, favoriteMeals = [] } = data
   return {
@@ -11,6 +12,10 @@ const createUser = (data: Chef) => {
     idChef: randomUUID(),
     favoriteMeals,
   }
+}
+const findUser = (idUser: string) => {
+  const userFound = chefsDB.find((chef) => chef.idChef === idUser)
+  return userFound
 }
 
 abstract class ChefModel {
@@ -22,20 +27,48 @@ abstract class ChefModel {
     return { status: true, idChef: newChef.idChef }
   }
   static addFavoriteMeal = async (
-    objData: Chef,
-    mealId: string
+    idUser: string,
+    idMeal: string
   ): Promise<boolean> => {
-    const indexOfChef = chefsDB.findIndex(
-      (chef) => chef.idChef === objData.idChef
-    )
-    if (indexOfChef === -1) return false
-    const userFound = chefsDB[indexOfChef] as any
-    const mealFound = await RecipeModel.getMealById(mealId)
+    const userFound = findUser(idUser) as any
+    if (userFound === undefined) return false
+    const indexOfChef = chefsDB.indexOf(userFound)
+
+    const mealFound = await RecipeModel.getMealById(idMeal)
     if (mealFound === null) return false
 
     const favoriteMeal = { ...mealFound.meals[0] }
-
     userFound.favoriteMeals.push(favoriteMeal)
+
+    chefsDB.splice(indexOfChef, 1, userFound)
+    writeFile(CHEFS_DB_PATH, chefsDB)
+
+    return true
+  }
+  static deleteUser = async (idUser: string) => {
+    const userFound = findUser(idUser)
+    if (userFound === undefined) return false
+
+    const indexOfChef = chefsDB.indexOf(userFound)
+    chefsDB.splice(indexOfChef, 1)
+    writeFile(CHEFS_DB_PATH, chefsDB)
+
+    return { status: true, idChef: userFound.idChef }
+  }
+  static deleteFavoriteMeal = async (
+    idUser: string,
+    idMeal: string
+  ): Promise<boolean> => {
+    const userFound = findUser(idUser) as any
+    if (userFound === undefined) return false
+    const indexOfChef = chefsDB.indexOf(userFound)
+
+    const mealFound = await RecipeModel.getMealById(idMeal)
+    if (mealFound === null) return false
+
+    const favoriteMeal = { ...mealFound.meals[0] } as any
+    const indexOfMeal = userFound.favoriteMeals.indexOf(favoriteMeal)
+    userFound.favoriteMeals.splice(indexOfMeal, 1)
 
     chefsDB.splice(indexOfChef, 1, userFound)
     writeFile(CHEFS_DB_PATH, chefsDB)

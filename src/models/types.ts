@@ -67,7 +67,7 @@ interface Category {
 interface Chef {
   name: string
   idChef: `${string}-${string}-${string}-${string}-${string}`
-  favoriteMeals: Meal[]
+  favoriteMeals?: Meal[]
 }
 
 interface Area {
