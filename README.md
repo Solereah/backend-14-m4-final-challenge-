@@ -1,8 +1,8 @@
-<h1 aling="center"> ADA ITW - ¡BACKEND!</h1>
+<h1 align="center"> ADA ITW - ¡BACKEND!</h1>
 
-<h2> Mi App de Recetas de Cocina</2>
-
-![Logo de la App](https://dribbble.com/shots/1391334-GIF-Cooking-icons/attachments/8792141?mode=media")
+<h2 align="center">ChefVirtual</2>
+<br>
+  <img src="https://media.giphy.com/media/ToMjGpCfO0af8so8s5q/giphy.gif"></>
 
 Bienvenido a la aplicación de recetas de cocina. Esta aplicación te permite descubrir y guardar tus recetas favoritas, planificar comidas y hacer que cocinar sea una experiencia divertida y deliciosa.
 
@@ -14,14 +14,12 @@ Bienvenido a la aplicación de recetas de cocina. Esta aplicación te permite de
 
 <h2>Instalación</h2>
 
-1. Clona o descarga este repositorio.
+1. `Clona` o `descarga` este repositorio.
 2. Abre la carpeta de la aplicación en tu entorno de desarrollo preferido.
-3. Instala las dependencias usando el siguiente comando: npm install
-4. Inicia la aplicación con el siguiente comando: npm run dev
+3. Instala las dependencias usando el siguiente comando: `npm install`
+4. Para correr la aplicación siempre se debe anteponer el siguiente comando: `npm run dev`
 
 <h2>Requisitos</h2>
 
 - Node.js
 - NPM (Node Package Manager)
-
-<h2>Comandos</h2>
