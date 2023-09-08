@@ -14,6 +14,9 @@ abstract class RecipeController {
   static getRandomMeal = async (): Promise<Meal> =>
     await RecipeModel.getRandomMeal()
 
+  static filterMealsByFirstLetter = async (letter: string): Promise<Meal[]> =>
+    await RecipeModel.filterMealsByFirstLetter(letter)
+
   static filterByMainIngredient = async (ingredient: string): Promise<Meal> =>
     await RecipeModel.filterByMainIngredient(ingredient)
 

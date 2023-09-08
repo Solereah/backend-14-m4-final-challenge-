@@ -23,3 +23,5 @@ Bienvenido a la aplicación de recetas de cocina. Esta aplicación te permite de
 
 - Node.js
 - NPM (Node Package Manager)
+
+<h2>Comandos</h2>

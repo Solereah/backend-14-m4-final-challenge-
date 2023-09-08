@@ -37,6 +37,14 @@ abstract class RecipeModel {
     )
     return result
   }
+  static filterMealsByFirstLetter = async (letter: string) => {
+    const paramToLower = letter.toLocaleLowerCase()
+    const searchByFirstLetter = "search.php?f="
+    const result = await fetchData(
+      `${RECIPES_BASE_URL}${searchByFirstLetter}${paramToLower}`
+    )
+    return result
+  }
 
   static getMealByName = async (meal: string) => {
     const capitalizeParam = capitalize(meal)
@@ -96,7 +104,7 @@ abstract class RecipeModel {
       )
       return result
     }
-    if (capitalizeList === "Area") {
+    if (capitalizeList === "Areas") {
       const listArea = "list.php?a="
       const result = await fetchData(
         `${RECIPES_BASE_URL}${listArea}${capitalizeList}`

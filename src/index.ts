@@ -11,7 +11,6 @@ const requestData = (params: any) => {
     name,
     random,
     filter,
-    ingredient,
     category,
     area,
     listAll,
@@ -22,6 +21,8 @@ const requestData = (params: any) => {
     deleteUser,
     idUser,
     addFavorite,
+    firstLetter,
+    mainIngredient,
   } = params
   if (meal) {
     if (all) return RecipeController.getAllMealsByCategory()
@@ -31,12 +32,15 @@ const requestData = (params: any) => {
       if (name) return RecipeController.getMealByName(name)
     }
     if (filter) {
-      if (ingredient) return RecipeController.filterByMainIngredient(ingredient)
+      if (firstLetter)
+        return RecipeController.filterMealsByFirstLetter(firstLetter)
+      if (mainIngredient)
+        return RecipeController.filterByMainIngredient(mainIngredient)
       if (category) return RecipeController.filterByCategory(category)
       if (area) return RecipeController.filterByArea(area)
     }
     if (listAll) {
-      if (name === "area" || name === "categories" || name === "ingredients")
+      if (name === "areas" || name === "categories" || name === "ingredients")
         return RecipeController.listAll(name)
     }
   }
@@ -60,7 +64,7 @@ const processParams = (params: any) => {
     name,
     random,
     filter,
-    ingredient,
+    mainIngredient,
     category,
     area,
     listAll,
@@ -72,6 +76,8 @@ const processParams = (params: any) => {
     idUser,
     deleteUser,
     addFavorite,
+    firstLetter,
+    areas,
   } = processedParameters
   if (!meal && !user)
     return `Error los parámetros ingresados no son correctos, ingrese --user o --meal.`
@@ -83,15 +89,18 @@ const processParams = (params: any) => {
       if (name) return { meal, search, name }
     }
     if (filter) {
-      if (ingredient) return { meal, filter, ingredient }
+      if (!firstLetter && !mainIngredient && !category && !area)
+        return `Error, faltan parámetros. Puede filtrar por firstLetter, ingredient, category o area.`
+      if (firstLetter) return { meal, filter, firstLetter }
+      if (mainIngredient) return { meal, filter, mainIngredient }
       if (category) return { meal, filter, category }
       if (area) return { meal, filter, area }
     }
     if (listAll) {
-      if (name !== "categories" && name !== "area" && name !== "ingredients")
+      if (name !== "categories" && name !== "areas" && name !== "ingredients")
         return `No se puede listar el parámetro ingresado porque no existe. Liste por categories, area o ingredients.`
       if (name === "categories") return { meal, listAll, name, categories }
-      if (name === "area") return { meal, listAll, name, area }
+      if (name === "areas") return { meal, listAll, name, areas }
       if (name === "ingredients") return { meal, listAll, name, ingredients }
     }
   }
