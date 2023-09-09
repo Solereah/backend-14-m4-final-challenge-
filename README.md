@@ -45,9 +45,9 @@ Bienvenido a la aplicación de recetas de cocina. Esta aplicación te permite de
 <strong>npm run dev -- --meal --listAll --name=categories </strong> --> Lista todas las categories, areas e ingredients
 
 <h3>Comando realacionados a user</h3>
-<strong>npm run dev -- --user --create --name=dolly </strong> --> Crea un usuario, solo se necesita el nombre
+<strong>npm run dev -- --user --create --name=jamie </strong> --> Crea un usuario, solo se necesita el nombre
 <br>
-<strong>npm run dev -- --user --addFavorite --idUser=acd66d06-e032-4444-9641-0c53f53d4d34 --idMeal=53025 </strong> --> Agrega una receta favorita al listado de comidas favoritas de cada usuario
+<strong>npm run dev -- --user --addFavorite --idUser=b7a82ed0-4df1-4571-8f5b-8a11f5b8b046 --idMeal=52830 </strong> --> Agrega una receta favorita al listado de comidas favoritas de cada usuario
 <br>
 <strong>npm run dev -- --user --deleteMeal --idUser= --idMeal= </strong> --> Borra una receta del listado de comidas favoritas de cada usuario
 <br>
